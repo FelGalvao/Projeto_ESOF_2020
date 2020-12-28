@@ -18,7 +18,7 @@ public class Cliente {
     @ManyToOne
     private Cliente cliente;
 
-    @ManyToMany
+    @OneToMany
     private List<Projeto> lista_projetos = new ArrayList<>();
 
     public Cliente(){ }
