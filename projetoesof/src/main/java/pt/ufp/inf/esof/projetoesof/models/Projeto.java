@@ -15,7 +15,31 @@ public class Projeto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nome;
-    private Enum estado;
+    private String estado;
+
+    //  POR_INICIAR(1)
+    //  INICIADO(2)
+    //  EM_ANDAMENTO_ATRASADO(3)
+    //  EM_ANDAMENTO_ADIANTADO(4)
+    //  CONCLUIDO(5)
+
+
+   /* public enum Estado {
+
+        POR_INICIAR(1), //calls constructor with value 1
+        INICIADO(2),
+        EM_ANDAMENTO_ATRASADO(3),
+        EM_ANDAMENTO_ADIANTADO(4),
+        CONCLUIDO(5)
+        ; // semicolon needed when fields / methods follow
+
+
+        private final int _estado;
+
+        private Estado(int _estado) {
+            this._estado = _estado;
+        }
+    }*/
 
     @ManyToOne
     private Cliente cliente;
@@ -27,11 +51,11 @@ public class Projeto {
 
     }
 
-    public Projeto(int id, String nome, Cliente cliente, Enum estado, List<Tarefa> lista_tarefas) {
+    public Projeto(int id, String nome, String estado, Cliente cliente, List<Tarefa> lista_tarefas) {
         this.id = id;
         this.nome = nome;
-        this.cliente = cliente;
         this.estado = estado;
+        this.cliente = cliente;
         this.lista_tarefas = lista_tarefas;
     }
 
@@ -44,5 +68,26 @@ public class Projeto {
         this.lista_tarefas.remove(t);
         t.setProjeto(null); //acho que não será preciso
     }
+
+    public void setEstado(int estado) {
+
+        if (estado == 1){
+            this.estado = "Por Iniciar";
+        }else if (estado == 2){
+            this.estado = "Iniciado";
+        }else if (estado == 3){
+            this.estado = "Em andamento atrasado";
+        }else if (estado == 4){
+            this.estado = "Em andamento adiantado";
+        }else if (estado == 5){
+            this.estado = "Concluido";
+        }else{
+            this.estado = null;
+        }
+
+    }
+
+
+
 
 }
