@@ -18,7 +18,10 @@ public class Empregado {
 
     @ManyToMany
     private List<Tarefa> lista_tarefas = new ArrayList<>();
+
+    @ManyToMany
     private List<Cargo> lista_cargos = new ArrayList<>();
+
 
     public Empregado() {
 
@@ -31,5 +34,27 @@ public class Empregado {
         this.lista_cargos = lista_cargos;
     }
 
+    public void addTarefa(Tarefa t){
+        t.addEmpregado(this);
+    }
 
+    public void removeTarefa(Tarefa t){
+        t.removeEmpregado(this);
+    }
+
+    public void addCargo(Cargo c){
+        this.lista_cargos.add(c);
+        c.getLista_empregados().add(this);
+    }
+
+    public void removeCargo(Cargo c){
+        this.lista_cargos.remove(c);
+        c.getLista_empregados().remove(this);
+    }
+
+
+
+
+
+    // não tenho a certeza se será preciso, não sei se o remove não fará isso
 }

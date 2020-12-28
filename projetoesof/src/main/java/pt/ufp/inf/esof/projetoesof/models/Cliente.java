@@ -35,11 +35,11 @@ public class Cliente {
     public void addProjeto(Projeto p){
       this.lista_projetos.add(p);
       p.setCliente(this);
-
-
-
-
-
-
     }
+
+    public void removeProjeto(Projeto p){
+        this.lista_projetos.remove(p);
+        p.setCliente(null); // não tenho a certeza se será preciso, não sei se o remove não fará isso
+    }
+
 }

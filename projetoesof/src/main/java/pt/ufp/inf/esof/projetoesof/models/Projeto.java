@@ -40,4 +40,9 @@ public class Projeto {
         t.setProjeto(this);
     }
 
+    public void removeTarefa(Tarefa t){
+        this.lista_tarefas.remove(t);
+        t.setProjeto(null); //acho que não será preciso
+    }
+
 }

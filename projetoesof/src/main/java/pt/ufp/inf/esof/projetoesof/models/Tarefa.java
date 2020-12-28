@@ -39,7 +39,12 @@ public class Tarefa {
 
     public void addEmpregado(Empregado e){
         this.lista_empregados.add(e);
+        e.getLista_tarefas().add(this);
+    }
 
+    public void removeEmpregado(Empregado e){
+        this.lista_empregados.remove(e);
+        e.getLista_tarefas().remove(this);
     }
 
 
