@@ -57,24 +57,5 @@ public class Tarefa {
     }
 
 
-    public void setEstado(Estado estado) {
-
-        if (estado == Estado.POR_INICIAR) {
-            this.setEstado(Estado.POR_INICIAR);
-        } else if (estado == Estado.INICIADO) {
-            this.setEstado(Estado.INICIADO);
-        } else if (estado == Estado.EM_ANDAMENTO_ATRASADO) {
-            this.setEstado(Estado.EM_ANDAMENTO_ATRASADO);
-        } else if (estado == Estado.EM_ANDAMENTO_ADIANTADO) {
-            this.setEstado(Estado.EM_ANDAMENTO_ADIANTADO);
-        } else if (estado == Estado.CONCLUIDO) {
-            this.setEstado(Estado.CONCLUIDO);
-        }
-    }
-
-    public void mudaEstado(Estado estado){
-        this.setEstado(estado);
-    }
-
 
 }
