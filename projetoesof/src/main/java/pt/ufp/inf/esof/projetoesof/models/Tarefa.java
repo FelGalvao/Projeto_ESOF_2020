@@ -16,7 +16,8 @@ public class Tarefa {
     private int id;
     private String nome;
     private int duracao;
-    private String estado;
+    Estado estado;
+
 
     @ManyToOne
     private Projeto projeto;
@@ -36,6 +37,15 @@ public class Tarefa {
         this.lista_empregados = lista_empregados;
     }
 
+    enum Estado{
+        POR_INICIAR,
+        INICIADO,
+        EM_ANDAMENTO_ATRASADO,
+        EM_ANDAMENTO_ADIANTADO,
+        CONCLUIDO
+    }
+
+
     public void addEmpregado(Empregado e){
         this.lista_empregados.add(e);
         e.getLista_tarefas().add(this);
@@ -46,21 +56,24 @@ public class Tarefa {
         e.getLista_tarefas().remove(this);
     }
 
-    public void setEstado(int estado) {
 
-        if (estado == 1){
-            this.estado = "Por Iniciar";
-        }else if (estado == 2){
-            this.estado = "Iniciado";
-        }else if (estado == 3){
-            this.estado = "Em andamento atrasado";
-        }else if (estado == 4){
-            this.estado = "Em andamento adiantado";
-        }else if (estado == 5){
-            this.estado = "Concluido";
-        }else{
-            this.estado = null;
+    public void setEstado(Estado estado) {
+
+        if (estado == Estado.POR_INICIAR) {
+            this.setEstado(Estado.POR_INICIAR);
+        } else if (estado == Estado.INICIADO) {
+            this.setEstado(Estado.INICIADO);
+        } else if (estado == Estado.EM_ANDAMENTO_ATRASADO) {
+            this.setEstado(Estado.EM_ANDAMENTO_ATRASADO);
+        } else if (estado == Estado.EM_ANDAMENTO_ADIANTADO) {
+            this.setEstado(Estado.EM_ANDAMENTO_ADIANTADO);
+        } else if (estado == Estado.CONCLUIDO) {
+            this.setEstado(Estado.CONCLUIDO);
         }
+    }
+
+    public void mudaEstado(Estado estado){
+        this.setEstado(estado);
     }
 
 
