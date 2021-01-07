@@ -13,7 +13,7 @@ import java.util.List;
 public class Empregado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String nome;
 
     @ManyToMany
@@ -27,7 +27,7 @@ public class Empregado {
 
     }
 
-    public Empregado(int id, String nome, List<Tarefa> lista_tarefas, List<Cargo> lista_cargos) {
+    public Empregado(Long id, String nome, List<Tarefa> lista_tarefas, List<Cargo> lista_cargos) {
         this.id = id;
         this.nome = nome;
         this.lista_tarefas = lista_tarefas;

@@ -23,8 +23,7 @@ public class Cliente {
 
     public Cliente(){ }
 
-    public Cliente(Long id, String nome, int idade, Cliente cliente, List<Projeto> lista_projetos) {
-        this.id = id;
+    public Cliente( String nome, int idade, Cliente cliente, List<Projeto> lista_projetos) {
         this.nome = nome;
         this.idade = idade;
         this.cliente = cliente;
