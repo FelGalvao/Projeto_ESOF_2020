@@ -1,7 +1,8 @@
-package pt.ufp.inf.esof.projetoesof.services;
+package pt.ufp.inf.esof.projetoesof;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 
 @SpringBootApplication
 public class ProjetoesofApplication {

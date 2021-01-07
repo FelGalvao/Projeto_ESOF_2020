@@ -33,8 +33,8 @@ public class Cliente {
 
 
     public void addProjeto(Projeto p){
-      this.lista_projetos.add(p);
-      p.setCliente(this);
+        this.lista_projetos.add(p);
+        p.setCliente(this);
     }
 
     public void removeProjeto(Projeto p){

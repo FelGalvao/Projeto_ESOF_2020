@@ -24,7 +24,8 @@ public class Cargo {
 
     }
 
-    public Cargo(String tipo, float valor_minuto, List<Empregado> lista_empregados) {
+    public Cargo(int id, String tipo, float valor_minuto, List<Empregado> lista_empregados) {
+        this.id = id;
         this.tipo = tipo;
         this.valor_minuto = valor_minuto;
         this.lista_empregados = lista_empregados;
