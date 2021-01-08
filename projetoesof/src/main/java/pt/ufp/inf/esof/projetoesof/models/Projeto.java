@@ -61,6 +61,7 @@ public class Projeto {
         int total=0, valor=0;
         for (Tarefa t:this.lista_tarefas) {
           valor= t.getEmpregado().getCargo().getValor_hora() * t.getDuracao();
+          valor=valor/60;
            total= total + valor;
 
             }
