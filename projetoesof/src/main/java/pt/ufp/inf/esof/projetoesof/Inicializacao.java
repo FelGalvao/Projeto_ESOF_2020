@@ -51,19 +51,19 @@ public class Inicializacao implements ApplicationListener<ContextRefreshedEvent>
 
         Cargo cargo1= new Cargo();
         cargo1.setTipo("Desenvolvedor Júnior");
-        cargo1.setValor_minuto(10);
+        cargo1.setValor_hora(10);
 
         Cargo cargo2 = new Cargo();
         cargo2.setTipo("Analista Júnior");
-        cargo2.setValor_minuto(20);
+        cargo2.setValor_hora(20);
 
         Cargo cargo3 = new Cargo();
         cargo3.setTipo("Desenvolvedor Sénior");
-        cargo3.setValor_minuto(40);
+        cargo3.setValor_hora(40);
 
         Cargo cargo4 = new Cargo();
         cargo4.setTipo("Analista Sénior");
-        cargo4.setValor_minuto(80);
+        cargo4.setValor_hora(80);
 
         cargoRepoI.save(cargo1);
         cargoRepoI.save(cargo2);

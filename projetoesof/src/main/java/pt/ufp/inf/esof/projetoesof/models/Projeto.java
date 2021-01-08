@@ -13,9 +13,13 @@ import java.util.List;
 public class Projeto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String nome;
+    private int valor;
+    private int tempo;
+
     Estado estado;
+
 
 
     @ManyToOne
@@ -28,8 +32,8 @@ public class Projeto {
 
     }
 
-    public Projeto(int id, String nome, Cliente cliente, List<Tarefa> lista_tarefas) {
-        this.id = id;
+    public Projeto( String nome, Cliente cliente, List<Tarefa> lista_tarefas) {
+
         this.nome = nome;
         this.cliente = cliente;
         this.lista_tarefas = lista_tarefas;
@@ -53,9 +57,32 @@ public class Projeto {
         t.setProjeto(null); //acho que não será preciso
     }
 
+    public int calcularValor(){
+        int total=0, valor=0;
+        for (Tarefa t:this.lista_tarefas) {
+          valor= t.getEmpregado().getCargo().getValor_hora() * t.getDuracao();
+           total= total + valor;
 
+            }
+         return tempo;
 
+        }
 
+        public int calcularTempo(){
+        int tempo=0;
+        for (Tarefa t:this.lista_tarefas) {
+            tempo= tempo +t.getDuracao();
+
+        }
+        return tempo;
+    }
 
 
 }
+
+
+
+
+
+
+

@@ -15,7 +15,7 @@ public class Cargo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String tipo;
-    private float valor_minuto;
+    private int valor_hora;
 
     @ManyToMany
     private List<Empregado> lista_empregados = new ArrayList<>();
@@ -24,10 +24,10 @@ public class Cargo {
 
     }
 
-    public Cargo(int id, String tipo, float valor_minuto, List<Empregado> lista_empregados) {
+    public Cargo(int id, String tipo, int valor_hora, List<Empregado> lista_empregados) {
         this.id = id;
         this.tipo = tipo;
-        this.valor_minuto = valor_minuto;
+        this.valor_hora = valor_hora;
         this.lista_empregados = lista_empregados;
     }
 

@@ -13,28 +13,31 @@ import java.util.List;
 public class Tarefa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String nome;
     private int duracao;
     Estado estado;
+
+    @ManyToOne
+    private Empregado empregado;
 
 
     @ManyToOne
     private Projeto projeto;
 
-    @ManyToMany
+   /* @ManyToMany
     private List<Empregado> lista_empregados = new ArrayList<>();
-
+   */
     public Tarefa(){
 
     }
 
-    public Tarefa(int id, String nome, int duracao, Projeto projeto, List<Empregado> lista_empregados) {
-        this.id = id;
+    public Tarefa(String nome, int duracao, Projeto projeto/*, List<Empregado> lista_empregados*/) {
+
         this.nome = nome;
         this.duracao = duracao;
         this.projeto = projeto;
-        this.lista_empregados = lista_empregados;
+        //this.lista_empregados = lista_empregados;
     }
 
     enum Estado{
@@ -46,7 +49,7 @@ public class Tarefa {
     }
 
 
-    public void addEmpregado(Empregado e){
+  /*  public void addEmpregado(Empregado e){
         this.lista_empregados.add(e);
         e.getLista_tarefas().add(this);
     }
@@ -55,7 +58,7 @@ public class Tarefa {
         this.lista_empregados.remove(e);
         e.getLista_tarefas().remove(this);
     }
-
+   */
 
 
 }
