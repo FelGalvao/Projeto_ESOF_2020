@@ -27,7 +27,7 @@ public class TarefaController {
 
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity<Tarefa> createTarefa(@RequestBody Tarefa tarefa){
         //this.logger.info("");
         Optional<Tarefa> optionalTarefa = tarefaService.createTarefa(tarefa);
@@ -40,7 +40,7 @@ public class TarefaController {
     @PatchMapping("/empregado/{id}")
     public ResponseEntity<Tarefa> adicionaEmpregado(@PathVariable Long id, @RequestBody Empregado empregado){
         Optional<Tarefa>optionalTarefa =tarefaService.adicionaEmpregado(id, empregado);
-        return optionalTarefa.map(tarefa -> ResponseEntity.ok(tarefa)).orElseGet(() -> ResponseEntity.notFound().build() );
+        return optionalTarefa.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build() );
     }
 
     @GetMapping("/{id}/estado")

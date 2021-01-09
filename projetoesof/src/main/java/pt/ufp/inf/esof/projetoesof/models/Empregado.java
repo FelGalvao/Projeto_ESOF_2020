@@ -36,10 +36,12 @@ public class Empregado {
 
     public void addTarefa(Tarefa t){
         t.setEmpregado(this);
+        //this.lista_tarefas.add(t);
     }
 
     public void removeTarefa(Tarefa t){
         t.setEmpregado(null);
+        this.lista_tarefas.remove(t);
     }
 
     public void addCargo(Cargo c){
