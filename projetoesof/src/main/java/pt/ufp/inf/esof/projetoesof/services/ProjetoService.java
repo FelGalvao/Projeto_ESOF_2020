@@ -34,20 +34,27 @@ public class ProjetoService {
         return Optional.empty();
     }
 
+
     public Optional<Integer> getProjetoTempo(Long id) {
         int tempo = 0;
         Optional<Projeto> p = projetoRepoI.findById(id);
-        Projeto projeto = p.get();
-        tempo = projeto.calcularTempo();
-        return Optional.of(tempo);
+        if(p.isPresent()) {
+            Projeto projeto = p.get();
+            tempo = projeto.calcularTempo();
+            return Optional.of(tempo);
+        }
+        return Optional.empty();
     }
 
     public Optional<Integer> getProjetoValor(Long id) {
         int valor = 0;
         Optional<Projeto> p = projetoRepoI.findById(id);
-        Projeto projeto = p.get();
-        valor = projeto.calcularValor();
-        return Optional.of(valor);
+        if(p.isPresent()) {
+            Projeto projeto = p.get();
+            valor = projeto.calcularValor();
+            return Optional.of(valor);
+        }
+        return Optional.empty();
     }
 
     public Optional<Projeto> adicionaTarefa(Long projetoId, Tarefa tarefa) {

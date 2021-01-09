@@ -39,7 +39,7 @@ public class Projeto {
         this.lista_tarefas = lista_tarefas;
     }
 
-    enum Estado{
+   public enum Estado{
         POR_INICIAR,
         INICIADO,
         EM_ANDAMENTO_ATRASADO,

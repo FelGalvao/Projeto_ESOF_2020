@@ -40,7 +40,7 @@ public class Tarefa {
         //this.lista_empregados = lista_empregados;
     }
 
-    enum Estado{
+    public enum Estado{
         POR_INICIAR,
         INICIADO,
         EM_ANDAMENTO_ATRASADO,

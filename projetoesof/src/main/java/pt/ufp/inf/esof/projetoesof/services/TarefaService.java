@@ -2,6 +2,7 @@ package pt.ufp.inf.esof.projetoesof.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pt.ufp.inf.esof.projetoesof.models.Cliente;
 import pt.ufp.inf.esof.projetoesof.models.Empregado;
 import pt.ufp.inf.esof.projetoesof.models.Projeto;
 import pt.ufp.inf.esof.projetoesof.models.Tarefa;
@@ -43,6 +44,11 @@ public class TarefaService {
 
         }
         return Optional.empty();
+
+    }
+
+    public Optional<Tarefa> findById(Long id){
+        return tarefaRepoI.findById(id);
 
     }
 

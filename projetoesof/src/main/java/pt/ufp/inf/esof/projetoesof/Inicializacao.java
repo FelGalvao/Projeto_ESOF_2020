@@ -79,18 +79,20 @@ public class Inicializacao implements ApplicationListener<ContextRefreshedEvent>
 
         Projeto projeto1 = new Projeto();
         projeto1.setNome("Primeiro Projeto");
-        //projeto1.setEstado(Projeto.Estado.INICIADO);
+        projeto1.setEstado(Projeto.Estado.INICIADO);
         projetoRepoI.save(projeto1);
+
+
 
         Tarefa tarefa1 = new Tarefa();
         tarefa1.setNome("Primeira Tarefa");
         tarefa1.setDuracao(10);
-        //tarefa1.setEstado(Tarefa.Estado.INICIADO);
+        tarefa1.setEstado(Tarefa.Estado.INICIADO);
 
         Tarefa tarefa2 = new Tarefa();
         tarefa2.setNome("Segunda Tarefa");
         tarefa2.setDuracao(20);
-        //tarefa2.setEstado(Tarefa.Estado.POR_INICIAR);
+        tarefa2.setEstado(Tarefa.Estado.POR_INICIAR);
         tarefaRepoI.save(tarefa1);
         tarefaRepoI.save(tarefa2);
 

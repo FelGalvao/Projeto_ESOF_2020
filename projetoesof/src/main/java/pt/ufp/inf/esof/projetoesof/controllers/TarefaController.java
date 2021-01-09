@@ -3,6 +3,7 @@ package pt.ufp.inf.esof.projetoesof.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pt.ufp.inf.esof.projetoesof.models.Cliente;
 import pt.ufp.inf.esof.projetoesof.models.Empregado;
 import pt.ufp.inf.esof.projetoesof.models.Projeto;
 import pt.ufp.inf.esof.projetoesof.models.Tarefa;
@@ -42,4 +43,11 @@ public class TarefaController {
         return optionalTarefa.map(tarefa -> ResponseEntity.ok(tarefa)).orElseGet(() -> ResponseEntity.notFound().build() );
     }
 
+    @GetMapping("/{id}/estado")
+    public ResponseEntity<Tarefa.Estado> getTarefaEstado(@PathVariable Long id){
+        Optional<Tarefa> optionalTarefa=tarefaService.findById(id);
+        return optionalTarefa.map(tarefa -> {
+            return ResponseEntity.ok(tarefa.getEstado());
+        }).orElseGet(() -> ResponseEntity.notFound().build());
+    }
 }
