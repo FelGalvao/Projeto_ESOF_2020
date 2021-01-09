@@ -1,5 +1,6 @@
 package pt.ufp.inf.esof.projetoesof.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,6 +17,7 @@ public class Cargo {
     private int id;
     private String tipo;
     private int valor_hora;
+    @JsonIgnore
 
     @ManyToMany
     private List<Empregado> lista_empregados = new ArrayList<>();
@@ -31,36 +33,4 @@ public class Cargo {
         this.lista_empregados = lista_empregados;
     }
 
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public int getValor_hora() {
-        return valor_hora;
-    }
-
-    public void setValor_hora(int valor_hora) {
-        this.valor_hora = valor_hora;
-    }
-
-    public List<Empregado> getLista_empregados() {
-        return lista_empregados;
-    }
-
-    public void setLista_empregados(List<Empregado> lista_empregados) {
-        this.lista_empregados = lista_empregados;
-    }
 }

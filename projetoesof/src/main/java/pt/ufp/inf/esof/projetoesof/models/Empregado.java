@@ -17,59 +17,26 @@ public class Empregado {
     private Long id;
     private String nome;
     @JsonIgnore
+
     @ManyToMany
     private List<Tarefa> lista_tarefas = new ArrayList<>();
 
     @ManyToOne
     private Cargo cargo;
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
 
-    public List<Tarefa> getLista_tarefas() {
-        return lista_tarefas;
-    }
-
-    public void setLista_tarefas(List<Tarefa> lista_tarefas) {
-        this.lista_tarefas = lista_tarefas;
-    }
-
-    public Cargo getCargo() {
-        return cargo;
-    }
-
-    public void setCargo(Cargo cargo) {
-        this.cargo = cargo;
-    }
-
-    public Empregado(Long id, String nome/*, List<Tarefa> lista_tarefas, List<Cargo> lista_cargos*/) {
+    public Empregado(Long id, String nome) {
         this.id = id;
         this.nome = nome;
-        //this.lista_tarefas = lista_tarefas;
-        //this.lista_cargos = lista_cargos;
     }
 
     public Empregado() {
 
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    @Override
-    public String toString() {
-        return "Empregado{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", cargo=" + cargo +
-                '}';
-    }
-
     public void addTarefa(Tarefa t){
         t.setEmpregado(this);
-        this.lista_tarefas.add(t);
+        //this.lista_tarefas.add(t);
     }
 
     public void removeTarefa(Tarefa t){
@@ -87,12 +54,5 @@ public class Empregado {
         c.getLista_empregados().remove(this);
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
 }

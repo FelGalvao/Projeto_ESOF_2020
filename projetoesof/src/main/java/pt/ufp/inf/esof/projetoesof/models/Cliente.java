@@ -1,5 +1,6 @@
 package pt.ufp.inf.esof.projetoesof.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,6 +16,8 @@ public class Cliente {
     private Long id;
     private String nome;
     private int idade;
+    @JsonIgnore
+
     @ManyToOne
     private Cliente cliente;
 
@@ -36,48 +39,8 @@ public class Cliente {
         //p.setCliente(this);
     }
 
-    public void removeProjeto(Projeto p){
+    public void removeProjeto(Projeto p) {
         this.lista_projetos.remove(p);
         p.setCliente(null); // não tenho a certeza se será preciso, não sei se o remove não fará isso
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public int getIdade() {
-        return idade;
-    }
-
-    public void setIdade(int idade) {
-        this.idade = idade;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public List<Projeto> getLista_projetos() {
-        return lista_projetos;
-    }
-
-    public void setLista_projetos(List<Projeto> lista_projetos) {
-        this.lista_projetos = lista_projetos;
     }
 }
