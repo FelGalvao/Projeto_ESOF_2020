@@ -23,20 +23,30 @@ public class Empregado {
     private Cargo cargo;
 
 
+    public Empregado(Long id, String nome/*, List<Tarefa> lista_tarefas, List<Cargo> lista_cargos*/) {
+        this.id = id;
+        this.nome = nome;
+        //this.lista_tarefas = lista_tarefas;
+        //this.lista_cargos = lista_cargos;
+    }
+
     public Empregado() {
 
     }
 
-    public Empregado(Long id, String nome, List<Tarefa> lista_tarefas/*, List<Cargo> lista_cargos*/) {
-        this.id = id;
-        this.nome = nome;
-        this.lista_tarefas = lista_tarefas;
-        //this.lista_cargos = lista_cargos;
+
+    @Override
+    public String toString() {
+        return "Empregado{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", cargo=" + cargo +
+                '}';
     }
 
     public void addTarefa(Tarefa t){
         t.setEmpregado(this);
-        //this.lista_tarefas.add(t);
+        this.lista_tarefas.add(t);
     }
 
     public void removeTarefa(Tarefa t){
@@ -55,8 +65,4 @@ public class Empregado {
     }
 
 
-
-
-
-    // não tenho a certeza se será preciso, não sei se o remove não fará isso
 }

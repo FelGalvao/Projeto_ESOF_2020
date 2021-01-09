@@ -21,7 +21,7 @@ public class TarefaService {
     @Autowired
     private ProjetoRepoI projetoRepoI;
 
-    public Iterable<Tarefa> getAllTarefas(){return tarefaRepoI.findAll();}
+    public Iterable<Tarefa> getAllTarefas(){return tarefaRepoI.findAll()    ;}
 
     public Optional <Tarefa> createTarefa(Tarefa tarefa){
        Optional<Projeto> optionalProjeto = projetoRepoI.findById(tarefa.getProjeto().getId());

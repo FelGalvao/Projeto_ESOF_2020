@@ -38,16 +38,16 @@ public class Inicializacao implements ApplicationListener<ContextRefreshedEvent>
         clienteRepoI.save(cliente);
         clienteRepoI.save(cliente2);
 
-        Empregado empregado1=new Empregado();
+        Empregado empregado1 = new Empregado();
+        empregadoRepoI.save(empregado1);
         empregado1.setNome("Joaquim Manuel");
 
 
-        Empregado empregado2=new Empregado();
-        empregado2.setNome("Afonso Dias");
+        //Empregado empregado2=new Empregado();
+        //empregadoRepoI.save(empregado2);
+        //empregado2.setNome("Afonso Dias");
+        //empregadoRepoI.save(empregado2);
 
-
-        empregadoRepoI.save(empregado1);
-        empregadoRepoI.save(empregado2);
 
         Cargo cargo1= new Cargo();
         cargo1.setTipo("Desenvolvedor Júnior");
@@ -71,9 +71,9 @@ public class Inicializacao implements ApplicationListener<ContextRefreshedEvent>
         cargoRepoI.save(cargo4);
 
         empregado1.addCargo(cargo1);
-        empregado2.addCargo(cargo2);
-        empregadoRepoI.save(empregado1);
-        empregadoRepoI.save(empregado2);
+        //empregadoRepoI.save(empregado1);
+
+        //empregado2.addCargo(cargo2);
 
 
 
@@ -85,6 +85,7 @@ public class Inicializacao implements ApplicationListener<ContextRefreshedEvent>
 
 
         Tarefa tarefa1 = new Tarefa();
+        tarefaRepoI.save(tarefa1);
         tarefa1.setNome("Primeira Tarefa");
         tarefa1.setDuracao(10);
         tarefa1.setEstado(Tarefa.Estado.INICIADO);
@@ -95,14 +96,23 @@ public class Inicializacao implements ApplicationListener<ContextRefreshedEvent>
         tarefa2.setNome("Segunda Tarefa");
         tarefa2.setDuracao(20);
         tarefa2.setEstado(Tarefa.Estado.POR_INICIAR);
+
+
         empregado1.addTarefa(tarefa1);
-        empregado2.addTarefa(tarefa2);
+        //empregadoRepoI.save(empregado1);
+
+
+        //empregado2.addTarefa(tarefa2);
         projeto1.addTarefa(tarefa1);
         projeto1.addTarefa(tarefa2);
         cliente.addProjeto(projeto1);
+
         
         tarefaRepoI.save(tarefa1);
         tarefaRepoI.save(tarefa2);
+
+        empregadoRepoI.save(empregado1);
+        //empregadoRepoI.save(empregado2);
 
 
         projetoRepoI.save(projeto1);
@@ -111,9 +121,6 @@ public class Inicializacao implements ApplicationListener<ContextRefreshedEvent>
 
         clienteRepoI.save(cliente);
 
-
-        empregadoRepoI.save(empregado1);
-        empregadoRepoI.save(empregado2);
 
 
 

@@ -25,19 +25,15 @@ public class Tarefa {
     @ManyToOne
     private Projeto projeto;
 
-   /* @ManyToMany
-    private List<Empregado> lista_empregados = new ArrayList<>();
-   */
     public Tarefa(){
 
     }
 
-    public Tarefa(String nome, int duracao, Projeto projeto/*, List<Empregado> lista_empregados*/) {
+    public Tarefa(String nome, int duracao, Projeto projeto) {
 
         this.nome = nome;
         this.duracao = duracao;
         this.projeto = projeto;
-        //this.lista_empregados = lista_empregados;
     }
 
     public enum Estado{
@@ -48,17 +44,17 @@ public class Tarefa {
         CONCLUIDO
     }
 
-
-  /*  public void addEmpregado(Empregado e){
-        this.lista_empregados.add(e);
-        e.getLista_tarefas().add(this);
+    @Override
+    public String toString() {
+        return "Tarefa{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", duracao=" + duracao +
+                ", estado=" + estado +
+                //", empregado=" + empregado +
+                ", projeto=" + projeto +
+                '}';
     }
-
-    public void removeEmpregado(Empregado e){
-        this.lista_empregados.remove(e);
-        e.getLista_tarefas().remove(this);
-    }
-   */
 
 
 }
