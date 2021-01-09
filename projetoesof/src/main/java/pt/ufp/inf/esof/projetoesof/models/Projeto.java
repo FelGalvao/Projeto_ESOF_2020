@@ -39,7 +39,63 @@ public class Projeto {
         this.lista_tarefas = lista_tarefas;
     }
 
-   public enum Estado{
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public int getValor() {
+        return valor;
+    }
+
+    public void setValor(int valor) {
+        this.valor = valor;
+    }
+
+    public int getTempo() {
+        return tempo;
+    }
+
+    public void setTempo(int tempo) {
+        this.tempo = tempo;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public List<Tarefa> getLista_tarefas() {
+        return lista_tarefas;
+    }
+
+    public void setLista_tarefas(List<Tarefa> lista_tarefas) {
+        this.lista_tarefas = lista_tarefas;
+    }
+
+    public enum Estado{
         POR_INICIAR,
         INICIADO,
         EM_ANDAMENTO_ATRASADO,
@@ -58,9 +114,9 @@ public class Projeto {
     }
 
     public int calcularValor(){
-        int total=0, valor=0;
+        int total=0; valor=0;
         for (Tarefa t:this.lista_tarefas) {
-          valor= t.getEmpregado().getCargo().getValor_hora() * t.getDuracao();
+          valor= t.getEmpregado().getCargo().getValor_hora() * t.getEstimativa();
           valor=valor/60;
            total= total + valor;
 
@@ -72,7 +128,7 @@ public class Projeto {
         public int calcularTempo(){
         int tempo=0;
         for (Tarefa t:this.lista_tarefas) {
-            tempo= tempo +t.getDuracao();
+            tempo= tempo +t.getEstimativa();
 
         }
         return tempo;
