@@ -19,11 +19,11 @@ public class Projeto {
     private int valor;
     private int tempo;
     Estado estado;
-    @JsonIgnore
 
     @ManyToOne
     private Cliente cliente;
 
+    @JsonIgnore
     @OneToMany
     private List<Tarefa> lista_tarefas = new ArrayList<>();
 
@@ -47,7 +47,7 @@ public class Projeto {
     }
 
     public void addTarefa(Tarefa t){
-        //this.lista_tarefas.add(t);
+        this.lista_tarefas.add(t);
         t.setProjeto(this);
     }
 

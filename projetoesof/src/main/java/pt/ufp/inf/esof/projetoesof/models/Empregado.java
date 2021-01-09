@@ -16,8 +16,8 @@ public class Empregado {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    @JsonIgnore
 
+    @JsonIgnore
     @ManyToMany
     private List<Tarefa> lista_tarefas = new ArrayList<>();
 
@@ -36,7 +36,7 @@ public class Empregado {
 
     public void addTarefa(Tarefa t){
         t.setEmpregado(this);
-        //this.lista_tarefas.add(t);
+        this.lista_tarefas.add(t);
     }
 
     public void removeTarefa(Tarefa t){

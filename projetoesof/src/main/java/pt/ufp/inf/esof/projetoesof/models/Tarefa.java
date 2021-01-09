@@ -17,7 +17,6 @@ public class Tarefa {
     private int duracao;
     private int duracao_estimada;
     Estado estado;
-    @JsonIgnore
 
     @ManyToOne
     private Empregado empregado;

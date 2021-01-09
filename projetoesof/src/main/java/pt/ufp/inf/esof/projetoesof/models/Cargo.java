@@ -17,8 +17,8 @@ public class Cargo {
     private int id;
     private String tipo;
     private int valor_hora;
-    @JsonIgnore
 
+    @JsonIgnore
     @ManyToMany
     private List<Empregado> lista_empregados = new ArrayList<>();
 
