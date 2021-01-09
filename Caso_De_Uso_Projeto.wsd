@@ -1,0 +1,22 @@
+@startuml 
+
+'left to right direction
+
+actor Cliente
+actor Admin 
+actor Empregado 
+
+rectangle System{
+    Cliente --> (Consulta projeto)
+    ' includeS
+    (Consulta projeto) --|>(Consultar preco)
+    (Consulta projeto) --|>(Consultar tempo)
+    (Consulta projeto) --|>(Consultar estado)
+    Empregado --> (Incluir percentagem de conclusao de tarefas)
+    Empregado --> (Definir tempo da tarefa)
+    ' exntend
+    (Consultar tempo) --|>(Definir tempo da tarefa)
+    Admin --> (Manutencao da empresa)
+    
+}
+@enduml 
