@@ -47,8 +47,8 @@ public class Projeto {
     }
 
     public void addTarefa(Tarefa t){
-        this.lista_tarefas.add(t);
-       //t.setProjeto(this);
+        //this.lista_tarefas.add(t);
+        t.setProjeto(this);
     }
 
     public void removeTarefa(Tarefa t){
