@@ -44,11 +44,6 @@ public class ProjetoController {
     }
 
 
-
-
-
-
-
     @PostMapping
     public ResponseEntity<Projeto> createProjeto(@RequestBody Projeto projeto){
         //this.logger.info("");
@@ -58,6 +53,12 @@ public class ProjetoController {
         }
         return ResponseEntity.badRequest().build();
     }
+
+   @PatchMapping("/tarefa/{id}")
+   public ResponseEntity<Projeto> adicionaTarefa(@PathVariable Long id, @RequestBody Tarefa tarefa){
+    Optional<Projeto>optionalProjeto =projetoService.adicionaTarefa(id, tarefa);
+    return optionalProjeto.map(projeto -> ResponseEntity.ok(projeto)).orElseGet(() -> ResponseEntity.notFound().build() );
+   }
 
 
 

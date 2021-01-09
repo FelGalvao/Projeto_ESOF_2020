@@ -2,6 +2,7 @@ package pt.ufp.inf.esof.projetoesof.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pt.ufp.inf.esof.projetoesof.models.Empregado;
 import pt.ufp.inf.esof.projetoesof.models.Projeto;
 import pt.ufp.inf.esof.projetoesof.models.Tarefa;
 import pt.ufp.inf.esof.projetoesof.repositories.ClienteRepoI;
@@ -30,6 +31,19 @@ public class TarefaService {
            return Optional.of(tarefaRepoI.save(tarefa));
        }
            return Optional.empty();
+    }
+
+    public Optional<Tarefa> adicionaEmpregado(Long tarefaId, Empregado empregado) {
+        Optional<Tarefa> optionalTarefa = tarefaRepoI.findById(tarefaId);
+        if (optionalTarefa.isPresent()) {
+            Tarefa tarefa = optionalTarefa.get();
+            tarefa.setEmpregado(empregado);
+            empregado.addTarefa(tarefa);
+            return optionalTarefa;
+
+        }
+        return Optional.empty();
+
     }
 
 

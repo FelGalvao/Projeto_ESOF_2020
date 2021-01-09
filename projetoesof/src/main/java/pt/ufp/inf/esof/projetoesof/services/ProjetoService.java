@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pt.ufp.inf.esof.projetoesof.models.Projeto;
 import pt.ufp.inf.esof.projetoesof.models.Cliente;
+import pt.ufp.inf.esof.projetoesof.models.Tarefa;
 import pt.ufp.inf.esof.projetoesof.repositories.ClienteRepoI;
 import pt.ufp.inf.esof.projetoesof.repositories.ProjetoRepoI;
 
@@ -17,13 +18,13 @@ public class ProjetoService {
 
     private ClienteRepoI clienteRepoI;
 
-    public Iterable<Projeto> getAllProjetos(){
+    public Iterable<Projeto> getAllProjetos() {
         return projetoRepoI.findAll();
     }
 
-    public Optional<Projeto> createProjeto(Projeto projeto){
+    public Optional<Projeto> createProjeto(Projeto projeto) {
         Optional<Cliente> optionalCliente = clienteRepoI.findById(projeto.getCliente().getId());
-        if(optionalCliente.isPresent()){
+        if (optionalCliente.isPresent()) {
             Cliente cliente = optionalCliente.get();
             cliente.addProjeto(projeto);
             clienteRepoI.save(cliente);
@@ -33,20 +34,32 @@ public class ProjetoService {
         return Optional.empty();
     }
 
-    public Optional<Integer> getProjetoTempo (Long id){
-        int tempo=0;
-     Optional <Projeto> p= projetoRepoI.findById(id);
-     Projeto projeto = p.get();
-     tempo=projeto.calcularTempo();
-     return Optional.of(tempo);
+    public Optional<Integer> getProjetoTempo(Long id) {
+        int tempo = 0;
+        Optional<Projeto> p = projetoRepoI.findById(id);
+        Projeto projeto = p.get();
+        tempo = projeto.calcularTempo();
+        return Optional.of(tempo);
     }
 
-    public Optional<Integer> getProjetoValor (Long id){
-        int valor=0;
-        Optional <Projeto> p= projetoRepoI.findById(id);
+    public Optional<Integer> getProjetoValor(Long id) {
+        int valor = 0;
+        Optional<Projeto> p = projetoRepoI.findById(id);
         Projeto projeto = p.get();
-        valor=projeto.calcularValor();
+        valor = projeto.calcularValor();
         return Optional.of(valor);
     }
 
+    public Optional<Projeto> adicionaTarefa(Long projetoId, Tarefa tarefa) {
+        Optional<Projeto> optionalProjeto = projetoRepoI.findById(projetoId);
+        if (optionalProjeto.isPresent()) {
+            Projeto projeto = optionalProjeto.get();
+            tarefa.setProjeto(projeto);
+            projeto.addTarefa(tarefa);
+            return optionalProjeto;
+
+        }
+        return Optional.empty();
+
+    }
 }
