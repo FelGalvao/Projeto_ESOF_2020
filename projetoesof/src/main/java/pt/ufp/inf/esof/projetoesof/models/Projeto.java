@@ -46,15 +46,24 @@ public class Projeto {
         CONCLUIDO
     }
 
+    /**
+     * Função que adiciona uma tarefa à lista de tarefas de um projeto
+     * @param t tarefa a ser adicionada
+     */
     public void addTarefa(Tarefa t){
         this.lista_tarefas.add(t);
         t.setProjeto(this);
     }
 
+    /**
+     * Função que remove uma tarefa da lista de tarefas de um projeto
+     * @param t tarefa a ser removida
+     */
     public void removeTarefa(Tarefa t){
         this.lista_tarefas.remove(t);
         t.setProjeto(null); //acho que não será preciso
     }
+
 
     public int calcularValor(){
         int total=0; valor=0;
@@ -63,20 +72,25 @@ public class Projeto {
           valor=valor/60;
            total= total + valor;
 
-            }
-         return tempo;
-
         }
+         return tempo;
+    }
 
-        public int calcularTempo(){
-        int tempo=0;
-        for (Tarefa t:this.lista_tarefas) {
-            tempo= tempo +t.getDuracao_estimada();
+
+    public int calcularTempo() {
+        int tempo = 0;
+        for (Tarefa t : this.lista_tarefas) {
+            tempo = tempo + t.getDuracao_estimada();
 
         }
         return tempo;
     }
 
+
+
+    /**
+     * Esta função define o estado do projeto mediante o estado das suas tarefas
+     */
     public void setEstado() {
 
         int i = 0;

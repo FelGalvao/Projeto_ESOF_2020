@@ -30,11 +30,20 @@ public class Cliente {
     }
 
 
+    /**
+     * Função para adicionar um projeto criado previamente à lista de projetos do cliente correspondente
+     * @param p projeto a ser adicionado
+     */
     public void addProjeto(Projeto p){
         this.lista_projetos.add(p);
         p.setCliente(this);
     }
 
+
+    /**
+     * Função para remover um projeto da lista de projetos do cliente
+     * @param p projeto a ser removido
+     */
     public void removeProjeto(Projeto p) {
         this.lista_projetos.remove(p);
         p.setCliente(null); // não tenho a certeza se será preciso, não sei se o remove não fará isso
