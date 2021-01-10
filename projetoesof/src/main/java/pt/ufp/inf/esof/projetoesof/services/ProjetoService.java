@@ -69,4 +69,9 @@ public class ProjetoService {
         return Optional.empty();
 
     }
+
+    public Optional<Projeto> findById(Long id){
+        return projetoRepoI.findById(id);
+
+    }
 }

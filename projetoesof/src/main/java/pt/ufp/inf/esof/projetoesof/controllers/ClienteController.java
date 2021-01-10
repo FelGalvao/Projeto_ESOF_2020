@@ -17,27 +17,28 @@ import java.util.Optional;
 @RequestMapping("/cliente")
 public class ClienteController {
 
-   // private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private ClienteService clienteService;
 
     @GetMapping()
-public ResponseEntity<Iterable<Cliente>>getAllClientes(){
-        //this.logger.info("");
+    public ResponseEntity<Iterable<Cliente>>getAllClientes(){
+        this.logger.info("Pedido GET recebido com sucesso.");
 
-    Iterable<Cliente> clientes = clienteService.getAllClientes();
-    return ResponseEntity.ok(clientes);
+        Iterable<Cliente> clientes = clienteService.getAllClientes();
+        return ResponseEntity.ok(clientes);
 
-}
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<Cliente> getClienteById(@PathVariable Long id){
+        this.logger.info("Pedido GET recebido com sucesso.");
         Optional<Cliente> optionalCliente=clienteService.findById(id);
-        return optionalCliente.map(cliente -> {
-            return ResponseEntity.ok(cliente);
-        }).orElseGet(() -> ResponseEntity.notFound().build());
+        return optionalCliente.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
+
+
 
 
 

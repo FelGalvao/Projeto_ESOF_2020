@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import pt.ufp.inf.esof.projetoesof.models.Cargo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,9 +13,9 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ClienteResponseDTO {
+public class EmpregadoResponseDTO {
     private String nome;
-    private int idade;
-    private List<ProjetoCreateDTO> lista_projetos = new ArrayList<>();
+    private Cargo cargo;
+    private List<TarefaCreateDTO> lista_tarefas = new ArrayList<>();
 
 }

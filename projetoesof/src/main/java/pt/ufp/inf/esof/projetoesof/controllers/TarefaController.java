@@ -37,15 +37,15 @@ public class TarefaController {
         return ResponseEntity.badRequest().build();
     }
 
-    @PatchMapping ("/empregado/{id}")
+    @PatchMapping("/empregado/{id}")
     public ResponseEntity<Tarefa> adicionaEmpregado(@PathVariable Long id, @RequestBody Empregado empregado){
-        Optional<Tarefa>optionalTarefa = tarefaService.adicionaEmpregado(id, empregado);
+        Optional<Tarefa>optionalTarefa =tarefaService.adicionaEmpregado(id, empregado);
         return optionalTarefa.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build() );
     }
 
     @GetMapping("/{id}/estado")
     public ResponseEntity<Tarefa.Estado> getTarefaEstado(@PathVariable Long id){
-        Optional<Tarefa> optionalTarefa = tarefaService.findById(id);
+        Optional<Tarefa> optionalTarefa=tarefaService.findById(id);
         return optionalTarefa.map(tarefa -> {
             return ResponseEntity.ok(tarefa.getEstado());
         }).orElseGet(() -> ResponseEntity.notFound().build());

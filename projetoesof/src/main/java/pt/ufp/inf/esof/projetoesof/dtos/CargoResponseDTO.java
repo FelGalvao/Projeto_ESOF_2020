@@ -12,9 +12,9 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ClienteResponseDTO {
-    private String nome;
-    private int idade;
-    private List<ProjetoCreateDTO> lista_projetos = new ArrayList<>();
+public class CargoResponseDTO {
+    private String tipo;
+    private int valor_hora;
+    private List<EmpregadoCreateDTO> lista_empregados = new ArrayList<>();
 
 }

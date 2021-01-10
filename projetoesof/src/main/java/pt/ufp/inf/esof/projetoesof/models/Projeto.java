@@ -27,6 +27,17 @@ public class Projeto {
     @OneToMany
     private List<Tarefa> lista_tarefas = new ArrayList<>();
 
+    public Projeto() {
+
+    }
+
+    public Projeto( String nome, Cliente cliente, List<Tarefa> lista_tarefas) {
+
+        this.nome = nome;
+        this.cliente = cliente;
+        this.lista_tarefas = lista_tarefas;
+    }
+
     public enum Estado{
         POR_INICIAR,
         INICIADO,

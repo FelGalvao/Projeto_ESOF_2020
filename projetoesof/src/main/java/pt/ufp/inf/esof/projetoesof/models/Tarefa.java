@@ -21,7 +21,6 @@ public class Tarefa {
     @ManyToOne
     private Empregado empregado;
 
-
     @ManyToOne
     private Projeto projeto;
 
@@ -29,13 +28,13 @@ public class Tarefa {
 
     }
 
-    public Tarefa(String nome, int duracao_estimada, Projeto projeto) {
+    public Tarefa(String nome, int duracao, int duracao_estimada, Projeto projeto) {
 
         this.nome = nome;
+        this.duracao = duracao;
         this.duracao_estimada = duracao_estimada; //duracao = duracao;
         this.projeto = projeto;
     }
-
 
     public enum Estado{
         POR_INICIAR,
@@ -44,6 +43,5 @@ public class Tarefa {
         EM_ANDAMENTO_ADIANTADO,
         CONCLUIDO
     }
-
 
 }
