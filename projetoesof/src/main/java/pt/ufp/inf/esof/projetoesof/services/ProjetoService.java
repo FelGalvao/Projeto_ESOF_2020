@@ -2,8 +2,8 @@ package pt.ufp.inf.esof.projetoesof.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pt.ufp.inf.esof.projetoesof.models.Projeto;
 import pt.ufp.inf.esof.projetoesof.models.Cliente;
+import pt.ufp.inf.esof.projetoesof.models.Projeto;
 import pt.ufp.inf.esof.projetoesof.models.Tarefa;
 import pt.ufp.inf.esof.projetoesof.repositories.ClienteRepoI;
 import pt.ufp.inf.esof.projetoesof.repositories.ProjetoRepoI;
@@ -69,7 +69,6 @@ public class ProjetoService {
         return Optional.empty();
 
     }
-
     public Optional<Projeto> findById(Long id){
         return projetoRepoI.findById(id);
 

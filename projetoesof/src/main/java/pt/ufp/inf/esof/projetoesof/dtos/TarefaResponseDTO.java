@@ -14,7 +14,8 @@ import pt.ufp.inf.esof.projetoesof.models.Tarefa;
 @AllArgsConstructor
 public class TarefaResponseDTO {
     private String nome;
-    private int estimativa;
+    private int duracao;
+    private int duracao_estimada;
     Tarefa.Estado estado;
     private Empregado empregado;
     private Projeto projeto;

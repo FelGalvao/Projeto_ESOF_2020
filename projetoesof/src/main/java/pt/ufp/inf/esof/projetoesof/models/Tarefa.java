@@ -24,16 +24,14 @@ public class Tarefa {
     @ManyToOne
     private Projeto projeto;
 
-    public Tarefa(){
-
+    public Tarefa(String nome, int duracao_estimada, Projeto projeto) {
+        this.nome = nome;
+        this.duracao_estimada = duracao_estimada;
+        this.projeto = projeto;
     }
 
-    public Tarefa(String nome, int duracao, int duracao_estimada, Projeto projeto) {
+    public Tarefa() {
 
-        this.nome = nome;
-        this.duracao = duracao;
-        this.duracao_estimada = duracao_estimada; //duracao = duracao;
-        this.projeto = projeto;
     }
 
     public enum Estado{

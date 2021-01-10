@@ -68,6 +68,14 @@ public class ProjetoController {
         return optionalProjeto.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/{id}/estado")
+    public ResponseEntity<Projeto.Estado> getProjetoEstado(@PathVariable Long id){
+        this.logger.info("Pedidio GET recebido com sucesso.");
+        Optional<Projeto> optionalProjeto=projetoService.findById(id);
+        return optionalProjeto.map(projeto -> {
+            return ResponseEntity.ok(projeto.getEstado());
+        }).orElseGet(() -> ResponseEntity.notFound().build());
+    }
 
 
 
