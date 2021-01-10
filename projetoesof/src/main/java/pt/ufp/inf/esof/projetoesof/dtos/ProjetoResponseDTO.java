@@ -5,8 +5,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import pt.ufp.inf.esof.projetoesof.models.Cliente;
 import pt.ufp.inf.esof.projetoesof.models.Projeto;
+import pt.ufp.inf.esof.projetoesof.models.Tarefa;
 
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,9 +18,12 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ClienteResponseDTO {
+public class ProjetoResponseDTO {
     private String nome;
-    private int idade;
-    private List<ProjetoCreateDTO> lista_projetos = new ArrayList<>();
+    private int valor;
+    private int tempo;
+    Projeto.Estado estado;
+    private Cliente cliente;
+    private List<TarefaCreateDTO> lista_tarefas = new ArrayList<>();
 
 }

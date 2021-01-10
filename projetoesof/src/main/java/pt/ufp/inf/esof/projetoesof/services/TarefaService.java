@@ -13,7 +13,9 @@ import pt.ufp.inf.esof.projetoesof.repositories.TarefaRepoI;
 import java.util.Optional;
 
 @Service
-public class TarefaService {
+public class TarefaService  {
+
+
 
     @Autowired
     private TarefaRepoI tarefaRepoI;
@@ -23,7 +25,7 @@ public class TarefaService {
 
     public Iterable<Tarefa> getAllTarefas(){return tarefaRepoI.findAll()    ;}
 
-    public Optional <Tarefa> createTarefa(Tarefa tarefa){
+   public Optional <Tarefa> createTarefa(Tarefa tarefa){
        Optional<Projeto> optionalProjeto = projetoRepoI.findById(tarefa.getProjeto().getId());
        if(optionalProjeto.isPresent()){
            Projeto projeto = optionalProjeto.get();
@@ -33,6 +35,8 @@ public class TarefaService {
        }
            return Optional.empty();
     }
+
+
 
     public Optional<Tarefa> adicionaEmpregado(Long tarefaId, Empregado empregado) {
         Optional<Tarefa> optionalTarefa = tarefaRepoI.findById(tarefaId);

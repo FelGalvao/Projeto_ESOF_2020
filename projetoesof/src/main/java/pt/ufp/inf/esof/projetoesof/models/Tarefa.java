@@ -85,7 +85,7 @@ public class Tarefa {
         this.projeto = projeto;
     }
 
-    @Override
+   /* @Override
     public String toString() {
         return "Tarefa{" +
                 "id=" + id +
@@ -95,7 +95,7 @@ public class Tarefa {
                 ", empregado=" + empregado +
                 ", projeto=" + projeto +
                 '}';
-    }
+    }*/
 
 
     public enum Estado{

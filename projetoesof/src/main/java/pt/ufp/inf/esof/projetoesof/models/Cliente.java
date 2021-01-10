@@ -1,5 +1,6 @@
 package pt.ufp.inf.esof.projetoesof.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,25 +16,26 @@ public class Cliente {
     private Long id;
     private String nome;
     private int idade;
-    @ManyToOne
-    private Cliente cliente;
+    //@ManyToOne
+    //private Cliente cliente;
 
+    @JsonIgnore
     @OneToMany
     private List<Projeto> lista_projetos = new ArrayList<>();
 
     public Cliente(){ }
 
-    public Cliente( String nome, int idade, Cliente cliente, List<Projeto> lista_projetos) {
+    public Cliente( String nome, int idade, /*Cliente cliente,*/ List<Projeto> lista_projetos) {
         this.nome = nome;
         this.idade = idade;
-        this.cliente = cliente;
+        //this.cliente = cliente;
         this.lista_projetos = lista_projetos;
     }
 
 
     public void addProjeto(Projeto p){
         this.lista_projetos.add(p);
-        //p.setCliente(this);
+        p.setCliente(this);
     }
 
     public void removeProjeto(Projeto p){
@@ -65,13 +67,13 @@ public class Cliente {
         this.idade = idade;
     }
 
-    public Cliente getCliente() {
+   /* public Cliente getCliente() {
         return cliente;
     }
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
-    }
+    }*/
 
     public List<Projeto> getLista_projetos() {
         return lista_projetos;

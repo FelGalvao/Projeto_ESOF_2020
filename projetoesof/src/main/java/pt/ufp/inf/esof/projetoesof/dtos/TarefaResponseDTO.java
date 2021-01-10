@@ -1,23 +1,24 @@
 package pt.ufp.inf.esof.projetoesof.dtos;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import pt.ufp.inf.esof.projetoesof.models.Empregado;
 import pt.ufp.inf.esof.projetoesof.models.Projeto;
+import pt.ufp.inf.esof.projetoesof.models.Tarefa;
 
-import javax.persistence.OneToMany;
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.ManyToOne;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ClienteResponseDTO {
+public class TarefaResponseDTO {
     private String nome;
-    private int idade;
-    private List<ProjetoCreateDTO> lista_projetos = new ArrayList<>();
+    private int estimativa;
+    Tarefa.Estado estado;
+    private Empregado empregado;
+    private Projeto projeto;
 
 }

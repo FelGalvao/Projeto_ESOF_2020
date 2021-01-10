@@ -1,5 +1,6 @@
 package pt.ufp.inf.esof.projetoesof;
 
+import ch.qos.logback.core.net.server.Client;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
@@ -25,7 +26,9 @@ public class Inicializacao implements ApplicationListener<ContextRefreshedEvent>
 
     @SneakyThrows
     @Override
+
     public void onApplicationEvent (ContextRefreshedEvent contextRefreshedEvent){
+
        Cliente cliente=new Cliente();
         cliente.setNome("Fernando Mendes");
         cliente.setIdade(56);
@@ -107,7 +110,7 @@ public class Inicializacao implements ApplicationListener<ContextRefreshedEvent>
         projeto1.addTarefa(tarefa2);
         cliente.addProjeto(projeto1);
 
-        
+
         tarefaRepoI.save(tarefa1);
         tarefaRepoI.save(tarefa2);
 
@@ -123,7 +126,68 @@ public class Inicializacao implements ApplicationListener<ContextRefreshedEvent>
 
 
 
+      /*
+        Cargo cargo1= new Cargo();
+        cargo1.setTipo("Desenvolvedor Júnior");
+        cargo1.setValor_hora(10);
 
+        Cargo cargo2 = new Cargo();
+        cargo2.setTipo("Analista Júnior");
+        cargo2.setValor_hora(20);
+
+        Cargo cargo3 = new Cargo();
+        cargo3.setTipo("Desenvolvedor Sénior");
+        cargo3.setValor_hora(40);
+
+        Cargo cargo4 = new Cargo();
+        cargo4.setTipo("Analista Sénior");
+        cargo4.setValor_hora(80);
+
+        cargoRepoI.save(cargo1);
+        cargoRepoI.save(cargo2);
+        cargoRepoI.save(cargo3);
+        cargoRepoI.save(cargo4);
+
+
+        Projeto p1 = new Projeto();
+        p1.setNome("Projeto 1");
+        p1.setEstado(Projeto.Estado.POR_INICIAR);
+        projetoRepoI.save(p1);
+
+
+        Tarefa t1 = new Tarefa();
+        t1.setEstado(Tarefa.Estado.POR_INICIAR);
+        t1.setNome("Tarefa 1");
+        t1.setEstimativa(712);
+        tarefaRepoI.save(t1);
+
+        Tarefa t2 = new Tarefa();
+        t2.setNome("Tarefa 2");
+        t2.setEstado(Tarefa.Estado.POR_INICIAR);
+        t2.setEstimativa(20);
+        tarefaRepoI.save(t2);
+
+        p1.addTarefa(t1);
+        p1.addTarefa(t2);
+        projetoRepoI.save(p1);
+        tarefaRepoI.save(t1);
+        tarefaRepoI.save(t2);
+
+
+
+
+        Cliente c1 = new Cliente();
+        c1.setNome("Manuel Joaquim");
+        c1.setIdade(23);
+
+
+        Cliente c2 = new Cliente();
+        c2.setNome("Fernando Mendes");
+        c2.setIdade(53);
+
+        Empregado e1 = new Empregado();
+
+      */
 
 
 

@@ -16,13 +16,14 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/empregado")
 public class    EmpregadoController {
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private EmpregadoService empregadoService;
 
     @GetMapping()
     public ResponseEntity<Iterable<Empregado>> getAllEmpregados(){
-        //this.logger.info("");
+        this.logger.info("Pedido GET recebido com sucesso.");
 
         Iterable<Empregado> empregados = empregadoService.getAllEmpregados();
         return ResponseEntity.ok(empregados);
@@ -31,14 +32,14 @@ public class    EmpregadoController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Empregado> getEmpregadoById(@PathVariable Long id){
+        this.logger.info("Pedido GET recebido com sucesso.");
         Optional<Empregado> optionalEmpregado=empregadoService.findById(id);
-        return optionalEmpregado.map(empregado -> {
-            return ResponseEntity.ok(empregado);
-        }).orElseGet(() -> ResponseEntity.notFound().build());
+        return optionalEmpregado.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping
     public ResponseEntity<Empregado> createEmpregado(@RequestBody Empregado empregado){
+          this.logger.info("Pedido POST recebido com sucesso.");
              Empregado e = empregadoService.createEmpregado(empregado);
              return ResponseEntity.ok(e);
     }

@@ -1,5 +1,6 @@
 package pt.ufp.inf.esof.projetoesof.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,7 +25,7 @@ public class Projeto {
 
     @ManyToOne
     private Cliente cliente;
-
+    @JsonIgnore
     @OneToMany
     private List<Tarefa> lista_tarefas = new ArrayList<>();
 
@@ -105,7 +106,7 @@ public class Projeto {
 
     public void addTarefa(Tarefa t){
         this.lista_tarefas.add(t);
-       // t.setProjeto(this);
+        t.setProjeto(this);
     }
 
     public void removeTarefa(Tarefa t){
@@ -121,7 +122,8 @@ public class Projeto {
            total= total + valor;
 
             }
-         return tempo;
+        this.valor=total;
+         return total;
 
         }
 
