@@ -3,9 +3,11 @@ package pt.ufp.inf.esof.projetoesof.controllers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pt.ufp.inf.esof.projetoesof.dtos.DTOStaticFactory;
+import pt.ufp.inf.esof.projetoesof.dtos.EmpregadoCreateDTO;
 import pt.ufp.inf.esof.projetoesof.dtos.TarefaCreateDTO;
 import pt.ufp.inf.esof.projetoesof.dtos.TarefaResponseDTO;
 import pt.ufp.inf.esof.projetoesof.models.Empregado;
@@ -51,10 +53,10 @@ public class TarefaController {
     }*/
 
     @PatchMapping("/empregado/{id}")
-    public ResponseEntity<Tarefa> adicionaEmpregado(@PathVariable Long id, @RequestBody Empregado empregado){
+    public ResponseEntity<TarefaCreateDTO> adicionaEmpregado(@PathVariable Long id, @RequestBody EmpregadoCreateDTO empregado){
         this.logger.info("Pedido PATCH recebido com sucesso.");
         Optional<Tarefa>optionalTarefa =tarefaService.adicionaEmpregado(id, empregado);
-        return optionalTarefa.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build() );
+        return optionalTarefa.map(value-> ResponseEntity.ok(dtoStaticFactory.tarefaCreateDTO(value))).orElseGet(()->ResponseEntity.badRequest().build());
     }
 
     @GetMapping("/{id}/estado")
@@ -66,8 +68,10 @@ public class TarefaController {
         }).orElseGet(() -> ResponseEntity.notFound().build());
     }
     @PostMapping
-    public ResponseEntity<TarefaResponseDTO> createExplicador(@RequestBody TarefaCreateDTO tarefa){
+    public ResponseEntity<TarefaCreateDTO> createTarefa(@RequestBody TarefaCreateDTO tarefa){
         Optional<Tarefa> optionalTarefa=tarefaService.createTarefa(tarefa.converter());
-        return optionalTarefa.map(value -> ResponseEntity.ok(dtoStaticFactory.tarefaResponseDTO(value))).orElseGet(() -> ResponseEntity.badRequest().build());
+        return optionalTarefa.map(value -> ResponseEntity.ok(dtoStaticFactory.tarefaCreateDTO(value))).orElseGet(() -> ResponseEntity.badRequest().build());
     }
+
+
 }

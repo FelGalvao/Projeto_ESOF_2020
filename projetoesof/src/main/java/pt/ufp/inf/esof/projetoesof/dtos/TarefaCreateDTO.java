@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import pt.ufp.inf.esof.projetoesof.models.Empregado;
+import pt.ufp.inf.esof.projetoesof.models.Projeto;
 import pt.ufp.inf.esof.projetoesof.models.Tarefa;
 
 
@@ -22,6 +24,8 @@ public class TarefaCreateDTO implements CreateDTO<Tarefa> {
     private String nome;
     private int estimativa;
     Tarefa.Estado estado;
+    Empregado empregado;
+    Projeto projeto;
 
     @Override
     public Tarefa converter(){
@@ -30,6 +34,8 @@ public class TarefaCreateDTO implements CreateDTO<Tarefa> {
         tarefa.setNome(this.getNome());
         tarefa.setEstimativa(this.getEstimativa());
         tarefa.setEstado(this.getEstado());
+        tarefa.setEmpregado(this.getEmpregado());
+        tarefa.setProjeto(this.projeto);
         return tarefa;
 
     }

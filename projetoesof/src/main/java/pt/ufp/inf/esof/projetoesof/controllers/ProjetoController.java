@@ -5,6 +5,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pt.ufp.inf.esof.projetoesof.dtos.DTOStaticFactory;
+import pt.ufp.inf.esof.projetoesof.dtos.ProjetoCreateDTO;
+import pt.ufp.inf.esof.projetoesof.dtos.ProjetoResponseDTO;
 import pt.ufp.inf.esof.projetoesof.dtos.TarefaCreateDTO;
 import pt.ufp.inf.esof.projetoesof.models.Cliente;
 import pt.ufp.inf.esof.projetoesof.models.Projeto;
@@ -21,6 +24,9 @@ public class ProjetoController {
 
     @Autowired
     private ProjetoService projetoService;
+
+    private final DTOStaticFactory dtoStaticFactory=DTOStaticFactory.getInstance();
+
 
     @GetMapping()
     public ResponseEntity<Iterable<Projeto>> getAllProjetos(){
@@ -48,17 +54,17 @@ public class ProjetoController {
 
 
     @PostMapping
-    public ResponseEntity<Projeto> createProjeto(@RequestBody Projeto projeto){
+    public ResponseEntity<ProjetoResponseDTO> createProjeto(@RequestBody Projeto projeto){
         this.logger.info("Pedido POST recebido com sucesso.");
        Optional<Projeto> optionalProjeto = projetoService.createProjeto(projeto);
-        return optionalProjeto.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.badRequest().build());
+        return optionalProjeto.map(value -> ResponseEntity.ok(dtoStaticFactory.projetoResponseDTO(value))).orElseGet(() -> ResponseEntity.badRequest().build());
     }
 
    @PatchMapping("/tarefa/{id}")
-   public ResponseEntity<Projeto> adicionaTarefa(@PathVariable Long id, @RequestBody TarefaCreateDTO tarefa){
+   public ResponseEntity<ProjetoResponseDTO> adicionaTarefa(@PathVariable Long id, @RequestBody TarefaCreateDTO tarefa){
         this.logger.info("Pedido PATCH recebido com sucesso.");
     Optional<Projeto>optionalProjeto =projetoService.adicionaTarefa(id, tarefa.converter());
-    return optionalProjeto.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build() );
+    return optionalProjeto.map(value -> ResponseEntity.ok(dtoStaticFactory.projetoResponseDTO(value ))).orElseGet(() -> ResponseEntity.badRequest().build());
    }
 
     @GetMapping("/{id}")
